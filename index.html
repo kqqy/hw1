@@ -8,6 +8,35 @@
             margin: 0;
             padding: 0;
         }
+        /*搜尋框*/
+        .search-bar{
+            display: flex;/* 使用 flexbox 讓搜尋框和按鈕排成一行 */
+            justify-content: center;/* 使搜尋框和按鈕在水平方向上居中 */
+            position: absolute;
+            top: 45%;  /* 設定搜尋框的位置 */
+            left: 25%;
+            width: 802px; /* 設定搜尋框寬度 */
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            padding: 1px 1px;
+        }
+        .search-bar input{
+            width: 780px;  /* 搜尋框內部文字輸入欄寬度 */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .search-bar button.search-button{
+            padding: 10px 20px;/* 按鈕的內邊距 */
+            background-color: #ee632c;/* 按鈕背景色 */
+            color: white;/* 按鈕文字顏色 */
+            border: none; /* 去除邊框 */
+            border-radius: 5px; /* 按鈕圓角 */
+            font-size: 16px;/* 按鈕文字大小 */
+            cursor: pointer;/* 鼠標懸停時顯示手型 */
+            margin-left: 2px;/* 搜尋框與按鈕之間的間距 */
+        }
         /*橫幅*/
         .header{
             width: 100%;
@@ -15,14 +44,23 @@
             background-color: #ee632c;
             position: relative;
         }
+
         /*在橫幅上放照片*/
-        .header img{
+        .header img.logo{
             position: absolute;
             top: 58%;
             left: 241px ;
             transform: translate(-50%, -50%);
             width: 162px;
             height: 65px;
+        }
+        .header img.car{
+            position: absolute;
+            top: 65%;
+            left: 1230px;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
         }
         .container{
             display: flex;
@@ -57,7 +95,12 @@
 <body>
 
     <div class="header">
-        <img src="img/shopeewhite.png" alt="logo">
+        <div class="search-bar">
+            <input type="text" placeholder="搜尋商品、分類或商店...">
+            <button class="search-button">→</button>
+        </div>
+        <img src="img/shopeewhite.png" alt="logo" class="logo">
+        <img src="img/shopcar.png" alt="car" class="car">
     </div>
     <div class="container">
         <img src="img/sticker.png" alt="蝦小編">
