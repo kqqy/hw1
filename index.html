@@ -2,59 +2,68 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>蝦皮購物維護中</title>
+    <title>蝦皮購物</title>
     <style>
-        body,html{
+        body, html {
             margin: 0;
             padding: 0;
+            box-sizing: border-box; /* 使用 border-box 確保寬度包含邊框和內邊距 */
+            overflow-x: hidden;
         }
-        /*搜尋框*/
-        .search-bar{
-            display: flex;/* 使用 flexbox 讓搜尋框和按鈕排成一行 */
-            justify-content: center;/* 使搜尋框和按鈕在水平方向上居中 */
+
+        /* 搜尋框 */
+        .search-bar {
+            display: flex; /* 使用 flexbox 讓搜尋框和按鈕排成一行 */
+            justify-content: center; /* 使搜尋框和按鈕在水平方向上居中 */
             position: absolute;
-            top: 45%;  /* 設定搜尋框的位置 */
-            left: 25%;
-            width: 802px; /* 設定搜尋框寬度 */
+            top: 45%; /* 設定搜尋框的位置 */
+            left: 50%; /* 使搜尋框水平居中 */
+            transform: translateX(-50%); /* 使搜尋框水平居中 */
+            width: 100%; /* 使用百分比寬度，使其相對於父容器 */
+            max-width: 802px; /* 限制搜尋框最大寬度 */
             border-radius: 5px;
             background-color: #f0f0f0;
             padding: 1px 1px;
         }
-        .search-bar input{
-            width: 780px;  /* 搜尋框內部文字輸入欄寬度 */
+
+        .search-bar input {
+            width: 100%; /* 讓輸入框填滿搜尋框的寬度 */
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
             font-size: 16px;
         }
-        .search-bar button.search-button{
-            padding: 10px 20px;/* 按鈕的內邊距 */
-            background-color: #ee632c;/* 按鈕背景色 */
-            color: white;/* 按鈕文字顏色 */
+
+        .search-bar button.search-button {
+            padding: 10px 20px; /* 按鈕的內邊距 */
+            background-color: #ee632c; /* 按鈕背景色 */
+            color: white; /* 按鈕文字顏色 */
             border: none; /* 去除邊框 */
             border-radius: 5px; /* 按鈕圓角 */
-            font-size: 16px;/* 按鈕文字大小 */
-            cursor: pointer;/* 鼠標懸停時顯示手型 */
-            margin-left: 2px;/* 搜尋框與按鈕之間的間距 */
+            font-size: 16px; /* 按鈕文字大小 */
+            cursor: pointer; /* 鼠標懸停時顯示手型 */
+            margin-left: 2px; /* 搜尋框與按鈕之間的間距 */
         }
-        /*橫幅*/
-        .header{
+
+        /* 橫幅 */
+        .header {
             width: 100%;
             height: 120px;
             background-color: #ee632c;
             position: relative;
         }
 
-        /*在橫幅上放照片*/
-        .header img.logo{
+        /* 在橫幅上放照片 */
+        .header img.logo {
             position: absolute;
             top: 58%;
-            left: 241px ;
+            left: 241px;
             transform: translate(-50%, -50%);
             width: 162px;
             height: 65px;
         }
-        .header img.car{
+
+        .header img.car {
             position: absolute;
             top: 65%;
             left: 1230px;
@@ -62,22 +71,54 @@
             width: 30px;
             height: 30px;
         }
-        .container{
+
+        /* 在橫幅上放文字 */
+        .clickable-text1 {
             display: flex;
-            flex-direction: column;/*文字圖片上下排列*/
-            align-items: center; /*水平居中對齊*/
+            justify-content: center; /* 水平居中所有文字 */
+            gap: 10px; /* 文字之間的間隔 */
+            position: absolute;
+            top: 2px;
+            left: 160px;
         }
-        .container img{
+
+        .clickable-text {
+            color: white;
+            font-size: 15px;
+            text-decoration: none; /* 去除預設的下劃線 */
+        }
+
+        .clickable-text:hover {
+            cursor: pointer;
+            text-decoration: underline; /* 懸停時顯示下劃線 */
+        }
+
+        .clickable-text2 {
+            position: relative;
+            display: flex;
+            justify-content: center; /* 水平居中所有文字 */
+            gap: 10px; /* 文字之間的間隔 */
+            top: 2px;
+            left: 400px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* 文字圖片上下排列 */
+            align-items: center; /* 水平居中對齊 */
+        }
+
+        .container img {
             width: 181px;
             height: 157px;
-
             margin-top: 100px;
         }
-        .container .text{
-            margin-left: 0px;
 
+        .container .text {
+            margin-left: 0px;
         }
-        .re-button{
+
+        .re-button {
             padding: 10px 20px;
             background-color: #ee632c;
             color: white;
@@ -86,34 +127,78 @@
             cursor: pointer;
             font-size: 16px;
         }
-        .color-text{
+
+        .color-text {
             color: #989898;
             text-align: center;
+        }
+
+        .loading-gif {
+            display: none;
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="search-bar">
-            <input type="text" placeholder="搜尋商品、分類或商店...">
-            <button class="search-button">→</button>
-        </div>
-        <img src="img/shopeewhite.png" alt="logo" class="logo">
-        <img src="img/shopcar.png" alt="car" class="car">
+<div class="header">
+    <div class="search-bar">
+        <input type="text" placeholder="搜尋商品、分類或商店...">
+        <button class="search-button">→</button>
     </div>
-    <div class="container">
-        <img src="img/sticker.png" alt="蝦小編">
-        <div class="text">
-            <h3 class="color-text">伺服器加載失敗</h3>
-            <p class="color-text">蝦小編正在全力搶修中，請給我們一點時間！</p>
-            <p class="color-text">請點擊下方按鈕重新整理頁面</p>
-        </div>
+    <img src="img/shopeewhite.png" alt="logo" class="logo">
+    <img src="img/shopcar.png" alt="car" class="car">
+    <div class="clickable-text1">
+        <p class="clickable-text">賣家中心</p>
+        <p class="clickable-text">下載</p>
+        <p class="clickable-text">追蹤我們</p>
     </div>
+    <div class="clickable-text2">
+        <p class="clickable-text">通知總覽</p>
+        <p class="clickable-text">幫助中心</p>
+        <p class="clickable-text">切換語言</p>
+        <p class="clickable-text">登入</p>
+    </div>
+</div>
 
-    <div class="container">
-        <button class="re-button">重新整理</button>
+<div class="container" id="main-container">
+    <img src="img/sticker.png" alt="蝦小編">
+    <div class="text">
+        <h3 class="color-text">伺服器加載失敗</h3>
+        <p class="color-text">蝦小編正在全力搶修中，請給我們一點時間！</p>
+        <p class="color-text">請點擊下方按鈕重新整理頁面</p>
     </div>
+</div>
+
+
+<div class="container">
+    <button class="re-button" onclick="reloadPage()">重新整理</button>
+    <img src="img/loading.gif" alt="loading" class="loading-gif" id="loading-gif">
+
+</div>
+
+<script>
+    // 觸發按鈕點擊時的函數
+    function reloadPage() {
+        // 顯示 GIF 動畫
+        document.getElementById('loading-gif').style.display = 'block';
+        // 隱藏重新整理按鈕
+        document.querySelector('.re-button').style.display = 'none';
+
+        // 隱藏整個 "container" 的內容，包括 sticker 圖片和文字
+        document.getElementById('main-container').style.display = 'none';
+
+        // 2秒後隱藏 GIF 動畫並顯示按鈕
+        setTimeout(function() {
+            document.getElementById('loading-gif').style.display = 'none';
+            document.querySelector('.re-button').style.display = 'block';
+            // 恢復顯示原本的內容
+            document.getElementById('main-container').style.display = 'flex';
+        }, 2000);  // 2秒後恢復
+    }
+</script>
 
 </body>
 </html>
