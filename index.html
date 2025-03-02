@@ -13,14 +13,14 @@
 
         /* 搜尋框 */
         .search-bar {
-            display: flex; /* 使用 flexbox 讓搜尋框和按鈕排成一行 */
-            justify-content: center; /* 使搜尋框和按鈕在水平方向上居中 */
+            display: flex;
+            justify-content: center;
             position: absolute;
-            top: 45%; /* 設定搜尋框的位置 */
-            left: 50%; /* 使搜尋框水平居中 */
-            transform: translateX(-50%); /* 使搜尋框水平居中 */
-            width: 100%; /* 使用百分比寬度，使其相對於父容器 */
-            max-width: 802px; /* 限制搜尋框最大寬度 */
+            top: 45%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 802px;
             border-radius: 5px;
             background-color: #f0f0f0;
             padding: 1px 1px;
@@ -61,6 +61,7 @@
             transform: translate(-50%, -50%);
             width: 162px;
             height: 65px;
+            cursor: pointer;
         }
 
         .header img.car {
@@ -70,6 +71,7 @@
             transform: translate(-50%, -50%);
             width: 30px;
             height: 30px;
+            cursor: pointer;
         }
 
         /* 在橫幅上放文字 */
@@ -78,7 +80,7 @@
             justify-content: center; /* 水平居中所有文字 */
             gap: 10px; /* 文字之間的間隔 */
             position: absolute;
-            top: 2px;
+            top: 16px;
             left: 160px;
         }
 
@@ -151,9 +153,9 @@
     <img src="img/shopeewhite.png" alt="logo" class="logo">
     <img src="img/shopcar.png" alt="car" class="car">
     <div class="clickable-text1">
-        <p class="clickable-text">賣家中心</p>
-        <p class="clickable-text">下載</p>
-        <p class="clickable-text">追蹤我們</p>
+        <a href="https://seller.shopee.tw/portal/inactive-seller?inactive_shop_id=283149903" class="clickable-text">賣家中心</a>
+        <a href="https://shopee.tw/web" class="clickable-text">下載</a>
+        <a href="https://www.facebook.com/ShopeeTW" class="clickable-text">追蹤我們</a>
     </div>
     <div class="clickable-text2">
         <p class="clickable-text">通知總覽</p>
@@ -194,9 +196,9 @@
         setTimeout(function() {
             document.getElementById('loading-gif').style.display = 'none';
             document.querySelector('.re-button').style.display = 'block';
-            // 恢復顯示原本的內容
+            // 恢復顯示原本的內容 // 2秒後恢復
             document.getElementById('main-container').style.display = 'flex';
-        }, 2000);  // 2秒後恢復
+        }, 2000);
     }
 </script>
 
